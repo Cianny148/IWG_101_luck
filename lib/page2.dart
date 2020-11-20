@@ -10,7 +10,7 @@ class SecondRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Painter Example',
+      title: 'Nuevo Lienzo',
       home: new ExamplePage(),
     );
   }
@@ -34,8 +34,8 @@ class _ExamplePageState extends State<ExamplePage> {
 
   PainterController _newController() {
     PainterController controller = new PainterController();
-    controller.thickness = 5.0;
-    controller.backgroundColor = Colors.green;
+    controller.thickness = 4.0;
+    controller.backgroundColor = Colors.white;
     return controller;
   }
 
@@ -46,7 +46,7 @@ class _ExamplePageState extends State<ExamplePage> {
       actions = <Widget>[
         new IconButton(
           icon: new Icon(Icons.content_copy),
-          tooltip: 'New Painting',
+          tooltip: 'Nuevo Dibujo',
           onPressed: () => setState(() {
             _finished = false;
             _controller = _newController();
@@ -59,13 +59,13 @@ class _ExamplePageState extends State<ExamplePage> {
             icon: new Icon(
               Icons.undo,
             ),
-            tooltip: 'Undo',
+            tooltip: 'Deshacer',
             onPressed: () {
               if (_controller.isEmpty) {
                 showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) =>
-                        new Text('Nothing to undo'));
+                        new Text('Nada que Deshacer'));
               } else {
                 _controller.undo();
               }
@@ -81,15 +81,15 @@ class _ExamplePageState extends State<ExamplePage> {
     }
     return new Scaffold(
       appBar: new AppBar(
-          title: const Text('Painter Example'),
+          title: const Text('Nuevo Dibujo'),
           actions: actions,
           bottom: new PreferredSize(
             child: new DrawBar(_controller),
-            preferredSize: new Size(MediaQuery.of(context).size.width, 30.0),
+            preferredSize: new Size(MediaQuery.of(context).size.width, 25.0),
           )),
       body: new Center(
           child: new AspectRatio(
-              aspectRatio: 1.0, child: new Painter(_controller))),
+              aspectRatio: 0.71, child: new Painter(_controller))),
     );
   }
 
@@ -101,7 +101,7 @@ class _ExamplePageState extends State<ExamplePage> {
         .push(new MaterialPageRoute(builder: (BuildContext context) {
       return new Scaffold(
         appBar: new AppBar(
-          title: const Text('View your image'),
+          title: const Text('Que deseas hacer con el dibujo?'),
         ),
         body: new Container(
             alignment: Alignment.center,
@@ -207,7 +207,7 @@ class _ColorPickerButtonState extends State<ColorPickerButton> {
             builder: (BuildContext context) {
               return new Scaffold(
                   appBar: new AppBar(
-                    title: const Text('Pick color'),
+                    title: const Text('Elige un color'),
                   ),
                   body: new Container(
                       alignment: Alignment.center,

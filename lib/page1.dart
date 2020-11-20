@@ -8,15 +8,15 @@ class FirstRoute extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blue[200],
 //Barra superior--------------------------------------------
-      appBar: AppBar(
-        title: Text('First Route',
-        textAlign: TextAlign.right,
+      /*appBar: AppBar(
+        title: Text('Only Draws?',
+        textAlign: TextAlign.center,
         style: TextStyle(
-          color: Colors.black45,
+          color: Colors.black,
         ),
         ),
         backgroundColor: Colors.indigo,
-      ),
+      ),*/
 //---------------------------------------------------------
 
 //cuerpo principal de la pagina-------------------------
@@ -26,7 +26,7 @@ class FirstRoute extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 //###################### Widgets en columna #######################
-
+      
 //Imagen avatar redonda-------------------------------------------------------
             Padding(
               padding: EdgeInsets.fromLTRB(0, 50, 0, 200),
@@ -36,6 +36,14 @@ class FirstRoute extends StatelessWidget {
               )
             ),
 
+            Text('Only Draws?',
+              style: TextStyle(
+                color: Colors.blue[900],
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+                fontFamily: 'IndieFlower',
+                fontSize: 60.0,
+              )),
 //Boton de prueba------------------------------------------------------------------
 //            ElevatedButton(
 //Funcion del boton------------------
@@ -54,9 +62,9 @@ class FirstRoute extends StatelessWidget {
               child: Card(
               margin: EdgeInsets.symmetric(
                 horizontal: 0.0,
-                vertical:30.0,
+                vertical: 15.0,
               ),
-              child: Text('A Dibujar !!',
+              child: Text('A Dibujar!!',
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'IndieFlower',
@@ -78,10 +86,10 @@ class FirstRoute extends StatelessWidget {
 //Child del boton---------------
               child: Card(
               margin: EdgeInsets.symmetric(
-                horizontal: 30.0,
-                vertical:5.0,
+                horizontal: 0.0,
+                vertical: 5.0,
               ),
-              child: Text('Opciones',
+              child: Text('Galería',
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'IndieFlower',
