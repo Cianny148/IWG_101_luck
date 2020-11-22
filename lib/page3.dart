@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iwg_proyect/page1.dart';
-import 'package:iwg_proyect/page2.dart';
+
 
 class ThirdRoute extends StatelessWidget {
   @override
