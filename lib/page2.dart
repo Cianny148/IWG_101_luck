@@ -221,7 +221,7 @@ class _ColorPickerButtonState extends State<ColorPickerButton> {
                   ),
                   body: new Container(
                       alignment: Alignment.center,
-                      child: new ColorPicker(
+                      child: new BlockPicker(
                         pickerColor: pickerColor,
                         onColorChanged: (Color c) => pickerColor = c,
                       )));
