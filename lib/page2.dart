@@ -103,6 +103,16 @@ class _ExamplePageState extends State<ExamplePage> {
         appBar: new AppBar(
           title: const Text('Que deseas hacer con el dibujo?'),
         ),
+        //---------------------------------------------------
+        bottomNavigationBar: BottomAppBar(
+          child: ButtonBar(
+            alignment:MainAxisAlignment.center,
+            children: <Widget>[
+            ElevatedButton(onPressed: null, child: Text('Compartir')),
+            ElevatedButton(onPressed: null, child: Text('Guardar'))]),
+            color: Colors.blue,
+            ),
+        //---------------------------------------
         body: new Container(
             alignment: Alignment.center,
             child: new FutureBuilder<Uint8List>(

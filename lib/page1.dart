@@ -13,10 +13,10 @@ class FirstRoute extends StatelessWidget {
         color: Colors.blue[100],
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
           Container(
-            padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
-                gradient:
-                    LinearGradient(colors: [Colors.blue[200], Colors.teal]),
+                gradient: LinearGradient(
+                    colors: [Colors.blue[200], Colors.blue[800]]),
               ),
               child: Column(children: [
                 DrawerHeader(
@@ -28,7 +28,7 @@ class FirstRoute extends StatelessWidget {
                 ElevatedButton(onPressed: null, child: Text('Login'))
               ])),
           ListTile(
-            title: Text('Boton 1'),
+            title: Text('Dibujar'),
             tileColor: Colors.white10,
             onTap: () {
               Navigator.push(context,
@@ -37,7 +37,7 @@ class FirstRoute extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            title: Text('Boton 2'),
+            title: Text('Galeria'),
             tileColor: Colors.white10,
             onTap: () {
               Navigator.push(context,
@@ -69,46 +69,34 @@ class FirstRoute extends StatelessWidget {
 //widget columna--------------------------------------------
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: <Widget>[
 //###################### Widgets en columna #######################
 
 //Imagen avatar redonda-------------------------------------------------------
-          Padding(
-              padding: EdgeInsets.fromLTRB(0, 10, 0, 100),
+          Container(
               child: CircleAvatar(
-                radius: 90.0,
-                backgroundImage: AssetImage('icons/New_Drawing.png'),
-              )),
+            radius: 80.0,
+            backgroundImage: AssetImage('icons/New_Drawing.png'),
+          )),
 
-          Text('Only Draws?',
-              style: TextStyle(
-                color: Colors.blue[900],
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-                fontFamily: 'IndieFlower',
-                fontSize: 60.0,
-              )),
-//Boton de prueba------------------------------------------------------------------
-//            ElevatedButton(
-//Funcion del boton------------------
-//              onPressed: () {
-//                Navigator.push(context, new MaterialPageRoute(builder: (context) => ThirdRoute()));
-//              }, child: Text('Pagina 3'),
-//            ),
-
-//Boton-------------------------------------------------------------------
-          FlatButton(
-//Funcion del boton------------
-            onPressed: () {
-              Navigator.push(context,
-                  new MaterialPageRoute(builder: (context) => SecondRoute()));
-            },
-//Child del boton---------------
-            child: Card(
-              margin: EdgeInsets.symmetric(
-                horizontal: 0.0,
-                vertical: 15.0,
-              ),
+          Container(
+            child: Text('Only Draws?',
+                style: TextStyle(
+                  color: Colors.blue[900],
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  fontFamily: 'IndieFlower',
+                  fontSize: 60.0,
+                )),
+            transform: Matrix4.rotationZ(-0.25),
+          ),
+//----------------------------------------------------------------------------------------
+          Container(
+            child: FlatButton(
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) => SecondRoute()));
+              },
               child: Text(
                 'A Dibujar!!',
                 style: TextStyle(
@@ -117,38 +105,38 @@ class FirstRoute extends StatelessWidget {
                   fontSize: 40.0,
                 ),
               ),
-              color: Colors.indigo,
-              shadowColor: Colors.orange,
             ),
+            padding: EdgeInsets.all(15.0),
+            margin: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+                color: Colors.blue[600],
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.all(Radius.circular(20))),
           ),
-//-------------------------------------------------------------------
-
-//Boton-------------------------------------------------------------------
-          FlatButton(
-//Funcion del boton------------
-            onPressed: () {
-              Navigator.push(context,
-                  new MaterialPageRoute(builder: (context) => ThirdRoute()));
-            },
-//Child del boton---------------
-            child: Card(
-              margin: EdgeInsets.symmetric(
-                horizontal: 0.0,
-                vertical: 5.0,
-              ),
+//-------------------------------------------------------------------------
+          Container(
+            child: FlatButton(
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) => ThirdRoute()));
+              },
               child: Text(
-                'Galería',
+                'Galeria',
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'IndieFlower',
-                  fontSize: 40.0,
+                  fontSize: 30.0,
                 ),
               ),
-              color: Colors.indigo,
-              shadowColor: Colors.orange,
             ),
+            padding: EdgeInsets.all(10.0),
+            margin: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+                color: Colors.blue[800],
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.all(Radius.circular(40))),
           ),
-//-------------------------------------------------------------------
+//-------------------------------------------------------------------------------
         ],
       )),
     );

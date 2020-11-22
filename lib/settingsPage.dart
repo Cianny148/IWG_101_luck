@@ -7,10 +7,10 @@ class FourthRoute extends StatelessWidget {
         appBar: AppBar(
           title: Text('Configuracion'),
           centerTitle: true,
-          backgroundColor: Colors.blueGrey,
+          backgroundColor: Colors.blue[600],
         ),
         body: Container(
-          color: Colors.black26,
+          color: Colors.blue[200],
             child: ListView(
           children: [
             ListTile(title: Text('Opcion 1')),
