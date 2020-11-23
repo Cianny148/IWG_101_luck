@@ -54,10 +54,6 @@ class FirstRoute extends StatelessWidget {
                   new MaterialPageRoute(builder: (context) => FourthRoute()));
             },
           ),
-          ListTile(
-            title: Text('color'),
-            tileColor: selectedColors.elementAt(7),
-          )
         ]),
       )),
 

@@ -36,7 +36,7 @@ class _ExamplePageState extends State<ExamplePage> {
   PainterController _newController() {
     PainterController controller = new PainterController();
     controller.thickness = 4.0;
-    controller.backgroundColor = selectedColors.elementAt(0);
+    controller.backgroundColor = Colors.white;
     return controller;
   }
 
@@ -223,6 +223,7 @@ class _ColorPickerButtonState extends State<ColorPickerButton> {
                   body: new Container(
                       alignment: Alignment.center,
                       child: new BlockPicker(
+                        //aqui se usa la lista de colores
                         availableColors: selectedColors,
                         pickerColor: pickerColor,
                         onColorChanged: (Color c) => pickerColor = c,
