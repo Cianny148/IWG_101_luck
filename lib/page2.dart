@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:painter/painter.dart';
+import 'package:iwg_proyect/main.dart';
 
 void main() => runApp(new SecondRoute());
 
@@ -35,7 +36,7 @@ class _ExamplePageState extends State<ExamplePage> {
   PainterController _newController() {
     PainterController controller = new PainterController();
     controller.thickness = 4.0;
-    controller.backgroundColor = Colors.white;
+    controller.backgroundColor = selectedColors.elementAt(0);
     return controller;
   }
 
@@ -222,6 +223,7 @@ class _ColorPickerButtonState extends State<ColorPickerButton> {
                   body: new Container(
                       alignment: Alignment.center,
                       child: new BlockPicker(
+                        availableColors: selectedColors,
                         pickerColor: pickerColor,
                         onColorChanged: (Color c) => pickerColor = c,
                       )));

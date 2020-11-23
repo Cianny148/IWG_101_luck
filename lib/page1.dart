@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iwg_proyect/page2.dart';
 import 'package:iwg_proyect/page3.dart';
 import 'package:iwg_proyect/settingsPage.dart';
+import 'package:iwg_proyect/main.dart';
 
 class FirstRoute extends StatelessWidget {
   @override
@@ -53,6 +54,10 @@ class FirstRoute extends StatelessWidget {
                   new MaterialPageRoute(builder: (context) => FourthRoute()));
             },
           ),
+          ListTile(
+            title: Text('color'),
+            tileColor: selectedColors.elementAt(7),
+          )
         ]),
       )),
 
