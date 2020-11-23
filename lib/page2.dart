@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:painter/painter.dart';
+import 'package:iwg_proyect/main.dart';
 
 void main() => runApp(new SecondRoute());
 
@@ -221,7 +222,9 @@ class _ColorPickerButtonState extends State<ColorPickerButton> {
                   ),
                   body: new Container(
                       alignment: Alignment.center,
-                      child: new ColorPicker(
+                      child: new BlockPicker(
+                        //aqui se usa la lista de colores
+                        availableColors: selectedColors,
                         pickerColor: pickerColor,
                         onColorChanged: (Color c) => pickerColor = c,
                       )));
