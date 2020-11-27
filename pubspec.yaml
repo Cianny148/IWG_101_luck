@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  permission_handler: ^5.0.1+1
+  image_gallery_saver: ^1.6.6
   random_color: ^1.0.5
   painter: ^0.4.0
   flutter_colorpicker: ^0.3.4
