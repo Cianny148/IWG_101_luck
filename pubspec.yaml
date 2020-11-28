@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  esys_flutter_share: ^1.0.2
   permission_handler: ^5.0.1+1
   image_gallery_saver: ^1.6.6
   random_color: ^1.0.5
