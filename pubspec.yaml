@@ -21,6 +21,9 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  esys_flutter_share: ^1.0.2
+  permission_handler: ^5.0.1+1
+  image_gallery_saver: ^1.6.6
   random_color: ^1.0.5
   painter: ^0.4.0
   flutter_colorpicker: ^0.3.4
@@ -31,10 +34,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
-  firebase_core: ^0.5.2+1
-  image_picker: ^0.6.7+14
-  firebase_storage: ^5.1.0
-  permission_handler: ^5.0.1+1
 
 dev_dependencies:
   flutter_test:
