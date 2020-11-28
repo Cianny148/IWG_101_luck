@@ -1,11 +1,16 @@
 # iwg_proyect
 
 Proyecto flutter.
-por ahora tiene solo la app que se genera de forma default en flutter.
 
-app de dibujo.
+app de dibujo
+
+Permite dibujar con la interfaz tactil del movil, cambiar colores de pincel y fondo
+
+posee paletas aleatorias diarias y permite guardar el dibujo en el dispositivo luego de terminarlo
 
 agregado paquete de ejemplo de dibujo en la pagina 2
+
+agregada una pagina de opciones y una barra lateral deslizable 
 
 
 ## Getting Started
