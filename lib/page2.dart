@@ -112,8 +112,9 @@ class _ExamplePageState extends State<ExamplePage> {
             ElevatedButton(onPressed: null, child: Text('Compartir')),
             ElevatedButton(
                 onPressed: () async {
-                  pedir();
-                  save(picture);
+                  await pedir();
+                  await save(picture);
+                  Navigator.pop(context);
                 },
                 child: Text('Guardar'))
           ]),

@@ -31,10 +31,12 @@ var ano_ = hoy.year.toInt();
 
 //crea una lista de largo modificable con colores creados al azar en base a la semilla seed
 List<Color> dailyColor(seed){
-  final List <Color> colores = RandomColor(seed).randomColors(count: 8,colorHue: ColorHue.purple,colorBrightness: ColorBrightness.random,colorSaturation: ColorSaturation.random);
+  List <Color> colores = RandomColor(seed).randomColors(count: 10,colorHue: ColorHue.random,colorBrightness: ColorBrightness.random,colorSaturation: ColorSaturation.random);
+  colores.add(Colors.black);
+  colores.add(Colors.white);
   return colores;
 }
-//Lista de colores creada en base al dia por ahora 
+//Lista de colores creada en base al numero de dia por ahora 
 List<Color>selectedColors = dailyColor(dia_);
 
 guardar(file) {
