@@ -1,9 +1,13 @@
 import 'dart:typed_data';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:painter/painter.dart';
 import 'package:iwg_proyect/main.dart';
+
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 
 void main() => runApp(new SecondRoute());
 
@@ -89,8 +93,8 @@ class _ExamplePageState extends State<ExamplePage> {
             preferredSize: new Size(MediaQuery.of(context).size.width, 25.0),
           )),
       body: new Center(
-          child: new AspectRatio(
-              aspectRatio: 0.71, child: new Painter(_controller))),
+          child: new Container(
+              alignment: Alignment.center, child: new Painter(_controller))),
     );
   }
 
@@ -106,13 +110,26 @@ class _ExamplePageState extends State<ExamplePage> {
         ),
         //---------------------------------------------------
         bottomNavigationBar: BottomAppBar(
-          child: ButtonBar(
-            alignment:MainAxisAlignment.center,
-            children: <Widget>[
-            ElevatedButton(onPressed: null, child: Text('Compartir')),
-            ElevatedButton(onPressed: null, child: Text('Guardar'))]),
-            color: Colors.blue,
-            ),
+          child:
+              ButtonBar(alignment: MainAxisAlignment.center, children: <Widget>[
+            ElevatedButton(
+                onPressed: () async {
+                  final ByteData bytes =
+                      await rootBundle.load("icons/New_Drawing.png");
+                  Share.file("Titulo", "nombre.png", bytes.buffer.asUint8List(),
+                      "images/png");
+                },
+                child: Text('Compartir')),
+            ElevatedButton(
+                onPressed: () async {
+                  await pedir();
+                  await save(picture);
+                  Navigator.pop(context);
+                },
+                child: Text('Guardar'))
+          ]),
+          color: Colors.blue,
+        ),
         //---------------------------------------
         body: new Container(
             alignment: Alignment.center,
@@ -125,7 +142,8 @@ class _ExamplePageState extends State<ExamplePage> {
                     if (snapshot.hasError) {
                       return new Text('Error: ${snapshot.error}');
                     } else {
-                      return Image.memory(snapshot.data);
+                      alli = Image.memory(snapshot.data);
+                      return alli;
                     }
                     break;
                   default:
