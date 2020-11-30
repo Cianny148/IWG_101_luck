@@ -2,9 +2,12 @@ import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:painter/painter.dart';
 import 'package:iwg_proyect/main.dart';
+
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 
 void main() => runApp(new SecondRoute());
 
@@ -109,7 +112,14 @@ class _ExamplePageState extends State<ExamplePage> {
         bottomNavigationBar: BottomAppBar(
           child:
               ButtonBar(alignment: MainAxisAlignment.center, children: <Widget>[
-            ElevatedButton(onPressed: null, child: Text('Compartir')),
+            ElevatedButton(
+                onPressed: () async {
+                  final ByteData bytes =
+                      await rootBundle.load("icons/New_Drawing.png");
+                  Share.file("Titulo", "nombre.png", bytes.buffer.asUint8List(),
+                      "images/png");
+                },
+                child: Text('Compartir')),                
             ElevatedButton(
                 onPressed: () async {
                   await pedir();
