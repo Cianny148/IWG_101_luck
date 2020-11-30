@@ -53,6 +53,13 @@ class FirstRoute extends StatelessWidget {
               Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => FourthRoute()));
             },
+          ),
+          ListTile(
+            title: Text('Pedir'),
+            tileColor: Colors.white10,
+            onTap: () {
+              pedir();
+            },
           )
         ]),
       )),
