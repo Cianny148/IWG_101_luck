@@ -119,7 +119,7 @@ class _ExamplePageState extends State<ExamplePage> {
                   Share.file("Titulo", "nombre.png", bytes.buffer.asUint8List(),
                       "images/png");
                 },
-                child: Text('Compartir')),                
+                child: Text('Compartir')),
             ElevatedButton(
                 onPressed: () async {
                   await pedir();
