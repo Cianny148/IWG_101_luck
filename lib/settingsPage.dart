@@ -1,6 +1,13 @@
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:iwg_proyect/main.dart';
 
-class FourthRoute extends StatelessWidget {
+class Settings extends StatefulWidget {
+  @override
+  _SettingsState createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,35 +17,51 @@ class FourthRoute extends StatelessWidget {
           backgroundColor: Colors.blue[600],
         ),
         body: Container(
-          color: Colors.blue[200],
+            color: Colors.blue[200],
             child: ListView(
-          children: [
-            ListTile(title: Text('Opcion 1')),
-            Divider(color: Colors.black,),
-            CheckboxListTile(
-              value: true,
-              title: Text("CheckBox"),
-              onChanged: (value) {},
-            ),
-            SwitchListTile(
-              value: false,
-              title: Text("Switch"),
-              onChanged: (value) {},
-            ),
-            Divider(color: Colors.black,),
-            ListTile(title: Text('Opcion 2')),
-            Divider(color: Colors.black,),
-            CheckboxListTile(
-              value: true,
-              title: Text("CheckBox"),
-              onChanged: (value) {},
-            ),
-            SwitchListTile(
-              value: false,
-              title: Text("Switch"),
-              onChanged: (value) {},
-            ),
-          ],
-        )));
+              children: [
+                ListTile(title: Text('Opcion 1')),
+                Divider(
+                  color: Colors.black,
+                ),
+                CheckboxListTile(
+                  value: opcion1,
+                  title: Text("Mostrar tema al dibujar"),
+                  subtitle: Text('temas seleccionados al azar en ingles'),
+                  onChanged: (value) {
+                    setState((){
+                      cambiarSettingsOne();
+                      cambiarTitulo(!opcion1);
+                    });
+                  },
+                ),
+                ListTile(
+                  title: Text("Generar Nuevo Tema"),
+                  subtitle: Text('$titulo'),
+                  onTap: () {
+                    setState(() {
+                      if (opcion1){
+                        setTitulo(WordPair.random().asPascalCase);
+                        cambiarTitulo(opcion1);
+                      }
+                    });
+                  },
+                ),
+                Divider(
+                  color: Colors.black,
+                ),
+                ListTile(title: Text('Opcion 2')),
+                Divider(
+                  color: Colors.black,
+                ),
+                CheckboxListTile(
+                  value: opcion2,
+                  title: Text("CheckBox"),
+                  onChanged: (value) {},
+                ),
+                Container(
+                )
+              ],
+            )));
   }
 }

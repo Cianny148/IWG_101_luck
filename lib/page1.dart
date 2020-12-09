@@ -51,7 +51,7 @@ class FirstRoute extends StatelessWidget {
             tileColor: Colors.white10,
             onTap: () {
               Navigator.push(context,
-                  new MaterialPageRoute(builder: (context) => FourthRoute()));
+                  new MaterialPageRoute(builder: (context) => Settings()));
             },
           )
         ]),
