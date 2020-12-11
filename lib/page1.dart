@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:iwg_proyect/page2.dart';
 import 'package:iwg_proyect/page3.dart';
 import 'package:iwg_proyect/settingsPage.dart';
-import 'package:iwg_proyect/main.dart';
 
 class FirstRoute extends StatelessWidget {
   @override

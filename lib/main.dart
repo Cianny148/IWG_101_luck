@@ -11,6 +11,7 @@ import 'package:iwg_proyect/temas.dart';
 
 void main() async{
   runApp(MyApp());
+
   Directory appDocDir = await getExternalStorageDirectory();
   appDocPath = appDocDir.path;
   print(appDocPath);
