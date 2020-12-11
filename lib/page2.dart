@@ -1,19 +1,12 @@
 import 'dart:typed_data';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:painter/painter.dart';
 
-<<<<<<< Updated upstream
-=======
 import 'package:iwg_proyect/main.dart';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
 
->>>>>>> Stashed changes
 void main() => runApp(new SecondRoute());
 
 class SecondRoute extends StatelessWidget {
@@ -117,16 +110,12 @@ class _ExamplePageState extends State<ExamplePage> {
         bottomNavigationBar: BottomAppBar(
           child:
               ButtonBar(alignment: MainAxisAlignment.center, children: <Widget>[
-<<<<<<< Updated upstream
-            ElevatedButton(onPressed: null, child: Text('Compartir')),
-=======
             ElevatedButton(
                 onPressed: () async {
                   final Uint8List pngBytes = await picture.toPNG();
                   Share.file("Titulo", '$dia'+'-'+'$mes'+'-'+'$ano'+'-'+'$cont'+'.png', pngBytes, "images/png");
                 },
                 child: Text('Compartir')),
->>>>>>> Stashed changes
             ElevatedButton(
                 onPressed: () async {
                   await pedir();

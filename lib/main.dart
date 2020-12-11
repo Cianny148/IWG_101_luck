@@ -2,13 +2,12 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:iwg_proyect/page1.dart';
-import 'package:painter/painter.dart';
 import 'package:random_color/random_color.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:english_words/english_words.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:iwg_proyect/temas.dart';
 
 void main() async{
   runApp(MyApp());
@@ -21,7 +20,7 @@ void main() async{
   titulo=await getTitulo();
   ids=await getFilesPath();
   if (neoFecha != fecha){
-    titulo=await setTitulo(WordPair.random().asPascalCase);
+    titulo=await setTitulo(pickWord());
     setFecha(fecha);
     setContador(1);
   }

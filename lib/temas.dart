@@ -1,4 +1,17 @@
-List sustantivos = [
+import 'dart:math';
+
+String getRandomElement<String>(List<String> list) {
+    final random = new Random();
+    var i = random.nextInt(list.length);
+    return list[i];
+}
+
+String pickWord(){
+  String titulo = getRandomElement(sustantivos);
+  return titulo;
+}
+
+List<String> sustantivos = [
   'Barco',
   'Balón',
   'Casa',

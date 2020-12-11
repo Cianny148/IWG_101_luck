@@ -21,15 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-<<<<<<< Updated upstream
-=======
   photo_view: ^0.10.3
-  image_picker: ^0.6.7+14
   shared_preferences: ^0.5.12+4
   path_provider: ^1.6.24
-  english_words: ^3.1.5
   esys_flutter_share: ^1.0.2
->>>>>>> Stashed changes
   permission_handler: ^5.0.1+1
   image_gallery_saver: ^1.6.6
   random_color: ^1.0.5

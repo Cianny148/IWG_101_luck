@@ -1,6 +1,6 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:iwg_proyect/main.dart';
+import 'package:iwg_proyect/temas.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -41,7 +41,7 @@ class _SettingsState extends State<Settings> {
                   onTap: () {
                     setState(() {
                       if (opcion1){
-                        setTitulo(WordPair.random().asPascalCase);
+                        setTitulo(pickWord());
                         cambiarTitulo(opcion1);
                       }
                     });

@@ -50,15 +50,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-<<<<<<< Updated upstream
-=======
-  english_words:
-    dependency: "direct main"
-    description:
-      name: english_words
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.1.5"
   esys_flutter_share:
     dependency: "direct main"
     description:
@@ -66,7 +57,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
->>>>>>> Stashed changes
   fake_async:
     dependency: transitive
     description:
@@ -74,6 +64,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0-nullsafety.1"
+  ffi:
+    dependency: transitive
+    description:
+      name: ffi
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.3"
+  file:
+    dependency: transitive
+    description:
+      name: file
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.2.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -86,13 +90,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.4"
-  flutter_plugin_android_lifecycle:
-    dependency: transitive
-    description:
-      name: flutter_plugin_android_lifecycle
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.11"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -103,20 +100,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  http:
-    dependency: transitive
-    description:
-      name: http
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.12.2"
-  http_parser:
-    dependency: transitive
-    description:
-      name: http_parser
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.1.4"
   image_gallery_saver:
     dependency: "direct main"
     description:
@@ -124,22 +107,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.6"
-<<<<<<< Updated upstream
-=======
-  image_picker:
-    dependency: "direct main"
-    description:
-      name: image_picker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.6.7+14"
-  image_picker_platform_interface:
-    dependency: transitive
-    description:
-      name: image_picker_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.1"
   intl:
     dependency: transitive
     description:
@@ -147,7 +114,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.16.1"
->>>>>>> Stashed changes
   matcher:
     dependency: transitive
     description:
@@ -176,8 +142,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0-nullsafety.1"
-<<<<<<< Updated upstream
-=======
   path_provider:
     dependency: "direct main"
     description:
@@ -213,14 +177,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.4+3"
-  pedantic:
-    dependency: transitive
-    description:
-      name: pedantic
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.9.2"
->>>>>>> Stashed changes
   permission_handler:
     dependency: "direct main"
     description:
@@ -235,8 +191,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-<<<<<<< Updated upstream
-=======
   photo_view:
     dependency: "direct main"
     description:
@@ -251,7 +205,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.1"
->>>>>>> Stashed changes
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -259,6 +212,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  process:
+    dependency: transitive
+    description:
+      name: process
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.13"
   random_color:
     dependency: "direct main"
     description:
@@ -369,6 +329,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0-nullsafety.3"
+  win32:
+    dependency: transitive
+    description:
+      name: win32
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.7.4"
+  xdg_directories:
+    dependency: transitive
+    description:
+      name: xdg_directories
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
 sdks:
   dart: ">=2.10.0-110 <2.11.0"
   flutter: ">=1.12.13+hotfix.5 <2.0.0"
