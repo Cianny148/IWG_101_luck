@@ -31,7 +31,9 @@ class _GalleryState extends State<Gallery> {
       ),
       itemBuilder: (context, index) {
         return GestureDetector(
-          child: Image.file(File(appDocPath + '${ids[index]}')),
+          child: Container(
+            child: Image.file(File(appDocPath + '${ids[index]}')),
+          ),
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
               return ImagePage(ids[index]);
@@ -53,6 +55,12 @@ class ImagePage extends StatelessWidget {
       appBar: AppBar(backgroundColor: Colors.black),
       backgroundColor: Colors.black,
       body: Image.file(File(appDocPath + '$id')),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.share),
+        onPressed: (){
+          
+        },
+      ),
     );
   }
 }
