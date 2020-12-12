@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:iwg_proyect/main.dart';
 
+import 'package:esys_flutter_share/esys_flutter_share.dart';
+
 class ThirdRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -57,8 +59,9 @@ class ImagePage extends StatelessWidget {
       body: Image.file(File(appDocPath + '$id')),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.share),
-        onPressed: (){
-          
+        onPressed: ()async{
+          final bytes = await File(appDocPath + '$id').readAsBytes();
+          Share.file("Titulo", '$dia'+'-'+'$mes'+'-'+'$ano'+'-'+'$cont'+'.png', bytes, "images/png");
         },
       ),
     );

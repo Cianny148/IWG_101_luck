@@ -1,5 +1,11 @@
 # This is a generated file; do not edit or check into version control.
 esys_flutter_share=C:\\Users\\benja\\Desktop\\Flutter\\.pub-cache\\hosted\\pub.dartlang.org\\esys_flutter_share-1.0.2\\
+firebase_analytics=C:\\Users\\benja\\Desktop\\Flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_analytics-6.3.0\\
+firebase_analytics_web=C:\\Users\\benja\\Desktop\\Flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_analytics_web-0.1.1\\
+firebase_auth=C:\\Users\\benja\\Desktop\\Flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth-0.18.4+1\\
+firebase_auth_web=C:\\Users\\benja\\Desktop\\Flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_auth_web-0.3.2+3\\
+firebase_core=C:\\Users\\benja\\Desktop\\Flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core-0.5.3\\
+firebase_core_web=C:\\Users\\benja\\Desktop\\Flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core_web-0.2.1+1\\
 image_gallery_saver=C:\\Users\\benja\\Desktop\\Flutter\\.pub-cache\\hosted\\pub.dartlang.org\\image_gallery_saver-1.6.6\\
 path_provider=C:\\Users\\benja\\Desktop\\Flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-1.6.24\\
 path_provider_linux=C:\\Users\\benja\\Desktop\\Flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_linux-0.0.1+2\\
