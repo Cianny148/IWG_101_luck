@@ -61,7 +61,7 @@ class ImagePage extends StatelessWidget {
         child: Icon(Icons.share),
         onPressed: ()async{
           final bytes = await File(appDocPath + '$id').readAsBytes();
-          Share.file("Titulo", '$dia'+'-'+'$mes'+'-'+'$ano'+'-'+'$cont'+'.png', bytes, "images/png");
+          Share.file("Titulo", 'Dibujo.png', bytes, "images/png");
         },
       ),
     );

@@ -1,13 +1,50 @@
-import 'dart:typed_data';
+import 'dart:io';
 import 'dart:ui';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:random_color/random_color.dart';
 import 'package:painter/painter.dart';
 
 import 'package:iwg_proyect/main.dart';
-import 'package:esys_flutter_share/esys_flutter_share.dart';
 
-void main() => runApp(new SecondRoute());
+import 'package:esys_flutter_share/esys_flutter_share.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+
+List<Color> dailyColor(seed) {
+  List<Color> colores = RandomColor(seed).randomColors(
+      count: 10,
+      colorHue: ColorHue.random,
+      colorBrightness: ColorBrightness.random,
+      colorSaturation: ColorSaturation.random);
+  colores.add(Colors.black);
+  colores.add(Colors.white);
+  return colores;
+}
+List<Color> selectedColors = dailyColor(neoFecha);
+
+pedir() async {
+  var storagestatus = await Permission.storage.status;
+
+  if (storagestatus.isUndetermined) {
+    await Permission.storage.request();
+  }
+}
+
+Future<void> save(img) async {
+  Uint8List pngBytes = await img.toPNG();
+  new File(appDocPath +'/'+'$dia'+'-'+'$mes'+'-'+'$ano'+'-'+'$cont'+'.jpg').writeAsBytes(pngBytes);
+  ids.add('/'+'$dia'+'-'+'$mes'+'-'+'$ano'+'-'+'$cont'+'.jpg');
+  await setFilesPath(ids);
+  ids=await getFilesPath();
+  ImageGallerySaver.saveImage(
+    pngBytes,
+    quality: 90,
+    name: '$dia'+'-'+'$mes'+'-'+'$ano'+'-'+'$cont',
+  );
+}
 
 class SecondRoute extends StatelessWidget {
   @override
@@ -119,11 +156,9 @@ class _ExamplePageState extends State<ExamplePage> {
             ElevatedButton(
                 onPressed: () async {
                   await pedir();
-                  print('$cont');
                   await save(picture);
                   Navigator.pop(context);
                   await setContador(cont+=1);
-                  print('$cont');
                 },
                 child: Text('Guardar'))
           ]),
@@ -141,8 +176,7 @@ class _ExamplePageState extends State<ExamplePage> {
                     if (snapshot.hasError) {
                       return new Text('Error: ${snapshot.error}');
                     } else {
-                      dibujo = Image.memory(snapshot.data);
-                      return dibujo;
+                      return Image.memory(snapshot.data);
                     }
                     break;
                   default:

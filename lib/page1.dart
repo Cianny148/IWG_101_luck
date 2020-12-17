@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:iwg_proyect/main.dart';
 import 'package:iwg_proyect/page2.dart';
 import 'package:iwg_proyect/page3.dart';
 import 'package:iwg_proyect/settingsPage.dart';
@@ -30,7 +32,8 @@ class FirstRoute extends StatelessWidget {
           ListTile(
             title: Text('Dibujar'),
             tileColor: Colors.white10,
-            onTap: () {
+            onTap: () async{
+              cont=await getContador();
               Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => SecondRoute()));
             },
@@ -39,7 +42,8 @@ class FirstRoute extends StatelessWidget {
           ListTile(
             title: Text('Galeria'),
             tileColor: Colors.white10,
-            onTap: () {
+            onTap: () async{
+              ids = await getFilesPath();
               Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => ThirdRoute()));
             },
@@ -93,7 +97,8 @@ class FirstRoute extends StatelessWidget {
 //----------------------------------------------------------------------------------------
           Container(
             child: FlatButton(
-              onPressed: () {
+              onPressed: () async{
+                cont=await getContador();
                 Navigator.push(context,
                     new MaterialPageRoute(builder: (context) => SecondRoute()));
               },
@@ -116,7 +121,8 @@ class FirstRoute extends StatelessWidget {
 //-------------------------------------------------------------------------
           Container(
             child: FlatButton(
-              onPressed: () {
+              onPressed: () async{
+                ids = await getFilesPath();
                 Navigator.push(context,
                     new MaterialPageRoute(builder: (context) => ThirdRoute()));
               },
