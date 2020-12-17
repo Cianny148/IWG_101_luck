@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:iwg_proyect/page1.dart';
 import 'package:iwg_proyect/temas.dart';
@@ -30,6 +31,7 @@ void main() async{
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,]);
     return MaterialApp(
       title: 'WelcomeScreen',
       home: FirstRoute(),

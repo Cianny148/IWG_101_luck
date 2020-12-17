@@ -128,8 +128,8 @@ class _ExamplePageState extends State<ExamplePage> {
             preferredSize: new Size(MediaQuery.of(context).size.width, 25.0),
           )),
       body: new Center(
-          child: new Container(
-              alignment: Alignment.center, child: new Painter(_controller))),
+          child: new AspectRatio(
+              aspectRatio: 0.71 , child: new Painter(_controller))),
     );
   }
 
