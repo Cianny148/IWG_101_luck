@@ -1,58 +1,75 @@
-import 'dart:typed_data';
+// Copyright 2020 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:iwg_proyect/page1.dart';
-import 'package:painter/painter.dart';
-import 'package:random_color/random_color.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter_signin_button/button_builder.dart';
 
-void main() => runApp(MyApp());
+import './register_page.dart';
+import './signin_page.dart';
 
-class MyApp extends StatelessWidget {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(AuthExampleApp());
+}
+
+/// The entry point of the application.
+///
+/// Returns a [MaterialApp].
+class AuthExampleApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Flutter',
-      
-      home: FirstRoute(),
-    );
+        title: 'Firebase Example App',
+        theme: ThemeData.dark(),
+        home: Scaffold(
+          body: AuthTypeSelector(),
+        ));
   }
 }
-//para usar las funciones y variables creadas en esta pagina dentro del codigo de otra se escribe import'package:iwg_proyect/main.dart'
 
-// aqui se obtienen los datos de la fecha
-var hoy = new DateTime.now();
+/// Provides a UI to select a authentication type page
+class AuthTypeSelector extends StatelessWidget {
+  // Navigates to a new page
+  void _pushPage(BuildContext context, Widget page) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (_) => page),
+    );
+  }
 
-// se separan en variables a parte
-var dia_ = hoy.day.toInt();
-var mes_ = hoy.month.toInt();
-var ano_ = hoy.year.toInt();
-
-//crea una lista de largo modificable con colores creados al azar en base a la semilla seed
-List<Color> dailyColor(seed){
-  List <Color> colores = RandomColor(seed).randomColors(count: 10,colorHue: ColorHue.random,colorBrightness: ColorBrightness.random,colorSaturation: ColorSaturation.random);
-  colores.add(Colors.black);
-  colores.add(Colors.white);
-  return colores;
-}
-//Lista de colores creada en base al numero de dia por ahora 
-List<Color>selectedColors = dailyColor(dia_);
-
-guardar(file) {
-  ImageGallerySaver.saveFile(file);
-}
-
-pedir() async{
-  var storagestatus = await Permission.storage.status;
-
-if (storagestatus.isUndetermined) {
-  await Permission.storage.request();
-}}
-
-Image alli;
-
-Future<void>save(img) async{
-  Uint8List pngBytes = await img.toPNG();
-  ImageGallerySaver.saveImage(pngBytes,quality: 90,);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Firebase Example App"),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            child: SignInButtonBuilder(
+              icon: Icons.person_add,
+              backgroundColor: Colors.indigo,
+              text: 'Registration',
+              onPressed: () => _pushPage(context, RegisterPage()),
+            ),
+            padding: const EdgeInsets.all(16),
+            alignment: Alignment.center,
+          ),
+          Container(
+            child: SignInButtonBuilder(
+              icon: Icons.verified_user,
+              backgroundColor: Colors.orange,
+              text: 'Sign In',
+              onPressed: () => _pushPage(context, SignInPage()),
+            ),
+            padding: const EdgeInsets.all(16),
+            alignment: Alignment.center,
+          ),
+        ],
+      ),
+    );
+  }
 }
