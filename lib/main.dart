@@ -10,6 +10,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  titulo = await getTitulo();
   runApp(MyApp());
 
   Directory appDocDir = await getExternalStorageDirectory();

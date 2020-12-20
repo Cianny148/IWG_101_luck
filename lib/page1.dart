@@ -22,7 +22,7 @@ class FirstRoute extends StatefulWidget {
 class _FirstRouteState extends State<FirstRoute> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
       drawerEnableOpenDragGesture: true,
       drawer: Drawer(
           child: Container(
