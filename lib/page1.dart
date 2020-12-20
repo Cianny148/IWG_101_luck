@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:iwg_proyect/page2.dart';
 import 'package:iwg_proyect/page3.dart';
@@ -99,8 +100,9 @@ class FirstRoute extends StatelessWidget {
                 )),
             transform: Matrix4.rotationZ(-0.25),
           ),
+
 //----------------------------------------------------------------------------------------
-          AnimatedContainer(
+          new AnimatedContainer(
             alignment: Alignment.center,
             height: 200,
             width: 325,
@@ -109,17 +111,17 @@ class FirstRoute extends StatelessWidget {
               border: Border.all(color: Colors.blue),
               borderRadius: BorderRadius.circular(5),
             ),
-            duration: Duration(seconds: 100),
+            duration: Duration(seconds: 1),
             curve: Curves.fastOutSlowIn,
             child: ColorizeAnimatedTextKit(
-              text: ["El", "tema", "de", "hoy", "es", "$titulo"],
+              repeatForever: true,
+              text: ['El', 'tema', 'de', 'hoy', 'es', '$titulo'],
               textStyle: TextStyle(
                   fontSize: 100.0,
                   fontFamily: 'IndieFlower',
                   fontWeight: FontWeight.w900),
               colors: [Colors.purple, Colors.blue, Colors.yellow, Colors.red],
               textAlign: TextAlign.center,
-              textDirection: TextDirection.rtl,
             ),
           ),
 
