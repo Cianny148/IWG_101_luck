@@ -1,58 +1,180 @@
+import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:iwg_proyect/page1.dart';
-import 'package:painter/painter.dart';
 import 'package:random_color/random_color.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:iwg_proyect/temas.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  titulo = await getTitulo();
+  runApp(MyApp());
+
+  Directory appDocDir = await getExternalStorageDirectory();
+  appDocPath = appDocDir.path;
+  print(appDocPath);
+  neoFecha = await getFecha();
+  opcion1 = await getSettingsOne();
+  cont = await getContador();
+  titulo = await getTitulo();
+  ids = await getFilesPath();
+  if (neoFecha != fecha) {
+    titulo = await setTitulo(pickWord());
+    setFecha(fecha);
+    setContador(1);
+  }
+  cambiarTitulo(opcion1);
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Welcome to Flutter',
-      
       home: FirstRoute(),
     );
   }
 }
-//para usar las funciones y variables creadas en esta pagina dentro del codigo de otra se escribe import'package:iwg_proyect/main.dart'
 
-// aqui se obtienen los datos de la fecha
+//Generar Colores nuevos---------------------------------------------------------------------------------------------
 var hoy = new DateTime.now();
+var dia = hoy.day.toInt();
+var mes = hoy.month.toInt();
+var ano = hoy.year.toInt();
+int fecha = int.parse('$ano' + '$mes' + '$dia');
+int neoFecha;
 
-// se separan en variables a parte
-var dia_ = hoy.day.toInt();
-var mes_ = hoy.month.toInt();
-var ano_ = hoy.year.toInt();
-
-//crea una lista de largo modificable con colores creados al azar en base a la semilla seed
-List<Color> dailyColor(seed){
-  List <Color> colores = RandomColor(seed).randomColors(count: 10,colorHue: ColorHue.random,colorBrightness: ColorBrightness.random,colorSaturation: ColorSaturation.random);
+List<Color> dailyColor(seed) {
+  List<Color> colores = RandomColor(seed).randomColors(
+      count: 10,
+      colorHue: ColorHue.random,
+      colorBrightness: ColorBrightness.random,
+      colorSaturation: ColorSaturation.random);
   colores.add(Colors.black);
   colores.add(Colors.white);
   return colores;
 }
-//Lista de colores creada en base al numero de dia por ahora 
-List<Color>selectedColors = dailyColor(dia_);
 
-guardar(file) {
-  ImageGallerySaver.saveFile(file);
-}
+List<Color> selectedColors = dailyColor(neoFecha);
 
-pedir() async{
+//Pedir permisos de almacenamiento---------------------------------------------------------------------------------------------
+pedir() async {
   var storagestatus = await Permission.storage.status;
 
-if (storagestatus.isUndetermined) {
-  await Permission.storage.request();
-}}
+  if (storagestatus.isUndetermined) {
+    await Permission.storage.request();
+  }
+}
 
-Image alli;
-
-Future<void>save(img) async{
+//Guardar Imagen----------------------------------------------------------------------------------------------------------
+Image dibujo;
+List<String> ids = [];
+Future<void> save(img) async {
   Uint8List pngBytes = await img.toPNG();
-  ImageGallerySaver.saveImage(pngBytes,quality: 90,);
+  new File(appDocPath +
+          '/' +
+          '$dia' +
+          '-' +
+          '$mes' +
+          '-' +
+          '$ano' +
+          '-' +
+          '$cont' +
+          '.jpg')
+      .writeAsBytes(pngBytes);
+  ids.add('/' + '$dia' + '-' + '$mes' + '-' + '$ano' + '-' + '$cont' + '.jpg');
+  await setFilesPath(ids);
+  ids = await getFilesPath();
+  ImageGallerySaver.saveImage(
+    pngBytes,
+    quality: 90,
+    name: '$dia' + '-' + '$mes' + '-' + '$ano' + '-' + '$cont',
+  );
+}
+
+int cont;
+List listaGuardada;
+String appDocPath;
+String appImg = '/storage/emulated/0/iwg_proyect';
+//settings---------------------------------------------------------------------------------------------------------------7
+bool opcion1;
+bool opcion2 = true;
+String titulo;
+String defaultTitle = 'Nuevo Lienzo';
+
+cambiarTitulo(bool value) async {
+  if (value) {
+    titulo = await getTitulo();
+  } else {
+    titulo = defaultTitle;
+  }
+}
+
+cambiarSettingsOne() async {
+  setSettingsOne(!opcion1);
+  opcion1 = await getSettingsOne();
+}
+
+getSettingsOne() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool settingsOne = prefs.getBool('settingsOne') ?? true;
+  return settingsOne;
+}
+
+setSettingsOne(bool value) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool settingsOne = prefs.getBool('settingsOne') ?? true;
+  await prefs.setBool('settingsOne', value);
+}
+
+getTitulo() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String titulo = prefs.getString('dynamicTitle') ?? 'Nuevo Lienzo';
+  return titulo;
+}
+
+setTitulo(String value) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String titulo = prefs.getString('dynamicTitle');
+  await prefs.setString('dynamicTitle', value);
+}
+
+getFecha() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  int fecha = prefs.getInt('dynamicDate') ?? 0;
+  return fecha;
+}
+
+setFecha(int value) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  int fecha = prefs.getInt('dynamicDate');
+  await prefs.setInt('dynamicDate', value);
+}
+
+getContador() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  int cont = prefs.getInt('dynamicCont') ?? 1;
+  return cont;
+}
+
+setContador(int value) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  int cont = prefs.getInt('dynamicCont');
+  await prefs.setInt('dynamicCont', value);
+}
+
+getFilesPath() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  List<String> path = prefs.getStringList('FilePath') ?? [];
+  return path;
+}
+
+setFilesPath(List<String> value) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  List<String> path = prefs.getStringList('FilePath');
+  await prefs.setStringList('FilePath', value);
 }
