@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "583526951194",
-    "project_id": "iwg-proyect",
-    "storage_bucket": "iwg-proyect.appspot.com"
+    "project_number": "997584034554",
+    "project_id": "odraws-46e2f",
+    "storage_bucket": "odraws-46e2f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:583526951194:android:b2cb46a5048e354c8b24a3",
+        "mobilesdk_app_id": "1:997584034554:android:8a115fe894e9c3d8aa0743",
         "android_client_info": {
           "package_name": "com.example.iwg_proyect"
         }
       },
       "oauth_client": [
         {
-          "client_id": "583526951194-t1rkoohape58tbd2ehdltgkjclnavahn.apps.googleusercontent.com",
+          "client_id": "997584034554-52sd3omj1ufegsvf8dtsq4oc8rkch45j.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD7ilSSYd6rmLfP8xnmf2XLCzAjRvRg15o"
+          "current_key": "AIzaSyAylSB-UZCK7UTZBAohhRRFqHxfY_0S9Bw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "583526951194-t1rkoohape58tbd2ehdltgkjclnavahn.apps.googleusercontent.com",
+              "client_id": "997584034554-52sd3omj1ufegsvf8dtsq4oc8rkch45j.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

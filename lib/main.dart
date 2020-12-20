@@ -9,18 +9,17 @@ import 'package:path_provider/path_provider.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-void main() async{
+void main() async {
   runApp(MyApp());
 
   Directory appDocDir = await getExternalStorageDirectory();
   appDocPath = appDocDir.path;
 
-  neoFecha=await getFecha();
-  opcion1=await getSettingsOne();
+  neoFecha = await getFecha();
+  opcion1 = await getSettingsOne();
 
-  if (neoFecha != fecha){
-    titulo=await setTitulo(pickWord());
+  if (neoFecha != fecha) {
+    titulo = await setTitulo(pickWord());
     setFecha(fecha);
     setContador(1);
   }
@@ -31,7 +30,8 @@ void main() async{
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,]);
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,]);
     return MaterialApp(
       title: 'WelcomeScreen',
       home: FirstRoute(),
@@ -45,7 +45,7 @@ var hoy = new DateTime.now();
 var dia = hoy.day.toInt();
 var mes = hoy.month.toInt();
 var ano = hoy.year.toInt();
-int fecha = int.parse('$ano'+'$mes'+'$dia');
+int fecha = int.parse('$ano' + '$mes' + '$dia');
 int neoFecha;
 
 //Pedir permisos de almacenamiento---------------------------------------------------------------------------------------------
@@ -53,80 +53,78 @@ int neoFecha;
 //Guardar Imagen----------------------------------------------------------------------------------------------------------
 int cont;
 String appDocPath;
-List <String>ids= [];
+List<String> ids = [];
 
 //settings---------------------------------------------------------------------------------------------------------------7
 bool opcion1;
-bool opcion2=true;
+bool opcion2 = true;
 String titulo;
-String defaultTittle='Nuevo Lienzo';
+String defaultTittle = 'Nuevo Lienzo';
 
-cambiarTitulo(bool value)async{
-  if (value){
+cambiarTitulo(bool value) async {
+  if (value) {
     titulo = await getTitulo();
-  }
-  else {
+  } else {
     titulo = defaultTittle;
   }
 }
 
-cambiarSettingsOne()async{
+cambiarSettingsOne() async {
   setSettingsOne(!opcion1);
   opcion1 = !opcion1;
 }
 
-
-getSettingsOne()async{
+getSettingsOne() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool settingsOne = prefs.getBool('settingsOne') ?? true;
   return settingsOne;
 }
 
-setSettingsOne(bool value)async{
+setSettingsOne(bool value) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setBool('settingsOne', value);
 }
 
-getTitulo()async{
+getTitulo() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String titulo = prefs.getString('dynamicTitle') ?? 'Nuevo Lienzo';
   return titulo;
 }
 
-setTitulo(String value)async{
+setTitulo(String value) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setString('dynamicTitle', value);
 }
 
-getFecha()async{
+getFecha() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   int fecha = prefs.getInt('dynamicDate') ?? 0;
   return fecha;
 }
 
-setFecha(int value)async{
+setFecha(int value) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setInt('dynamicDate', value);
 }
 
-getContador()async{
+getContador() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   int cont = prefs.getInt('dynamicCont') ?? 1;
   return cont;
 }
 
-setContador(int value)async{
+setContador(int value) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setInt('dynamicCont', value);
 }
 
-getFilesPath()async{
+getFilesPath() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   List<String> path = prefs.getStringList('FilePath') ?? [];
   return path;
 }
 
-setFilesPath(List<String> value)async{
+setFilesPath(List<String> value) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setStringList('FilePath', value);
 }

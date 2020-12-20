@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
-import 'package:iwg_proyect/main.dart';
 import 'package:iwg_proyect/page2.dart';
 import 'package:iwg_proyect/page3.dart';
 import 'package:iwg_proyect/settingsPage.dart';
+import 'package:iwg_proyect/login.dart';
 
-class FirstRoute extends StatelessWidget {
+import 'package:animated_text_kit/animated_text_kit.dart';
+
+import 'dart:ui';
+
+import 'package:iwg_proyect/main.dart';
+
+import 'main.dart';
+
+class FirstRoute extends StatefulWidget {
+  @override
+  _FirstRouteState createState() => _FirstRouteState();
+}
+
+class _FirstRouteState extends State<FirstRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,13 +41,18 @@ class FirstRoute extends StatelessWidget {
                     radius: 80,
                   ),
                 ),
-                ElevatedButton(onPressed: null, child: Text('Login'))
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          new MaterialPageRoute(builder: (context) => LoginPage()));
+                    },
+                    child: Text('Login'))
               ])),
           ListTile(
             title: Text('Dibujar'),
             tileColor: Colors.white10,
-            onTap: () async{
-              cont=await getContador();
+            onTap: () async {
+              cont = await getContador();
               Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => SecondRoute()));
             },
@@ -42,7 +61,7 @@ class FirstRoute extends StatelessWidget {
           ListTile(
             title: Text('Galeria'),
             tileColor: Colors.white10,
-            onTap: () async{
+            onTap: () async {
               ids = await getFilesPath();
               Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => ThirdRoute()));
@@ -56,7 +75,7 @@ class FirstRoute extends StatelessWidget {
               Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => Settings()));
             },
-          )
+          ),
         ]),
       )),
 
@@ -94,13 +113,53 @@ class FirstRoute extends StatelessWidget {
                 )),
             transform: Matrix4.rotationZ(-0.25),
           ),
+
+//----------------------------------------------------------------------------------------
+          new AnimatedContainer(
+            alignment: Alignment.center,
+            height: 200,
+            width: 325,
+            decoration: BoxDecoration(
+              color: Colors.white70,
+              border: Border.all(color: Colors.blue),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            duration: Duration(seconds: 1),
+            curve: Curves.fastOutSlowIn,
+            child: ColorizeAnimatedTextKit(
+              repeatForever: true,
+              text: ['El', 'tema', 'de', 'hoy', 'es', '$titulo'],
+              textStyle: TextStyle(
+                  fontSize: 100.0,
+                  fontFamily: 'IndieFlower',
+                  fontWeight: FontWeight.w900),
+              colors: [Colors.purple, Colors.blue, Colors.yellow, Colors.red],
+              textAlign: TextAlign.center,
+            ),
+          ),
+
 //----------------------------------------------------------------------------------------
           Container(
             child: FlatButton(
-              onPressed: () async{
-                cont=await getContador();
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) => SecondRoute()));
+              onPressed: () async {
+                cont = await getContador();
+                Navigator.push(
+                    context,
+                    new PageRouteBuilder(
+                        transitionDuration: Duration(seconds: 1),
+                        transitionsBuilder:
+                            (context, animation, animationTime, child) {
+                          animation = CurvedAnimation(
+                              parent: animation, curve: Curves.elasticInOut);
+                          return ScaleTransition(
+                            alignment: Alignment.center,
+                            scale: animation,
+                            child: child,
+                          );
+                        },
+                        pageBuilder: (context, animtation, animationTime) {
+                          return SecondRoute();
+                        }));
               },
               child: Text(
                 'A Dibujar!!',
@@ -118,13 +177,29 @@ class FirstRoute extends StatelessWidget {
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.all(Radius.circular(20))),
           ),
+
 //-------------------------------------------------------------------------
           Container(
             child: FlatButton(
-              onPressed: () async{
+              onPressed: () async {
                 ids = await getFilesPath();
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) => ThirdRoute()));
+                Navigator.push(
+                    context,
+                    new PageRouteBuilder(
+                        transitionDuration: Duration(seconds: 1),
+                        transitionsBuilder:
+                            (context, animation, animationTime, child) {
+                          animation = CurvedAnimation(
+                              parent: animation, curve: Curves.elasticInOut);
+                          return ScaleTransition(
+                            alignment: Alignment.center,
+                            scale: animation,
+                            child: child,
+                          );
+                        },
+                        pageBuilder: (context, animtation, animationTime) {
+                          return ThirdRoute();
+                        }));
               },
               child: Text(
                 'Galeria',
@@ -148,3 +223,5 @@ class FirstRoute extends StatelessWidget {
     );
   }
 }
+
+class $titulo {}
