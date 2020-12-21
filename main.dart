@@ -2,7 +2,6 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:iwg_proyect/page1.dart';
-import 'package:painter/painter.dart';
 import 'package:random_color/random_color.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
