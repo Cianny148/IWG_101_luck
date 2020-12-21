@@ -5,6 +5,7 @@ import 'package:iwg_proyect/page2.dart';
 import 'package:iwg_proyect/page3.dart';
 import 'package:iwg_proyect/settingsPage.dart';
 import 'package:iwg_proyect/login.dart';
+import 'package:iwg_proyect/animacion.dart';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 
@@ -99,16 +100,12 @@ class _FirstRouteState extends State<FirstRoute> {
 
 //Imagen avatar redonda-------------------------------------------------------
           Container(
-            child: Center(
-              child:Stack(children: [
-              CircleAvatar(
-                radius: 80.0,
-                backgroundImage: AssetImage('icons/New_Drawing.png'),
-              ),
-              //inserte su widget de animacion
-            ]),
-            )
-          ),
+              child: Center(
+                  child: CircleAvatar(
+            radius: 100.0,
+            backgroundImage: AssetImage('icons/New_Drawing.png'),
+            child: Circle_prog({}),
+          ))),
 
           Container(
             child: Text('Only Draws?',
