@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter/rendering.dart';
+import 'package:iwg_proyect/animacion.dart';
+
 import 'package:iwg_proyect/page2.dart';
 import 'package:iwg_proyect/page3.dart';
 import 'package:iwg_proyect/settingsPage.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+
+import 'dart:ui';
+import 'package:flutter/material.dart';
+
+import 'package:iwg_proyect/main.dart';
+
+import 'main.dart';
 
 class FirstRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    BorderSide side;
     return Scaffold(
       drawerEnableOpenDragGesture: true,
       drawer: Drawer(
@@ -50,34 +63,36 @@ class FirstRoute extends StatelessWidget {
             tileColor: Colors.white10,
             onTap: () {
               Navigator.push(context,
-                  new MaterialPageRoute(builder: (context) => FourthRoute()));
+                  new MaterialPageRoute(builder: (context) => Settings()));
             },
-          )
+          ),
         ]),
       )),
 
       backgroundColor: Colors.blue[200],
-//Barra superior--------------------------------------------
+      //Barra superior--------------------------------------------
       appBar: AppBar(
         backgroundColor: Colors.blue[200],
         shadowColor: Colors.white10,
       ),
-//---------------------------------------------------------
+      //---------------------------------------------------------
 
-//cuerpo principal de la pagina-------------------------
+      //cuerpo principal de la pagina-------------------------
       body: Center(
-//widget columna--------------------------------------------
+          //widget columna--------------------------------------------
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-//###################### Widgets en columna #######################
+          //###################### Widgets en columna #######################
 
-//Imagen avatar redonda-------------------------------------------------------
+          //Imagen avatar redonda-------------------------------------------------------
           Container(
-              child: CircleAvatar(
-            radius: 80.0,
+              child: Center(
+                  child: CircleAvatar(
+            radius: 100.0,
             backgroundImage: AssetImage('icons/New_Drawing.png'),
-          )),
+            child: Circle_prog({}),
+          ))),
 
           Container(
             child: Text('Only Draws?',
@@ -90,12 +105,52 @@ class FirstRoute extends StatelessWidget {
                 )),
             transform: Matrix4.rotationZ(-0.25),
           ),
-//----------------------------------------------------------------------------------------
+
+          //----------------------------------------------------------------------------------------
+          new AnimatedContainer(
+            alignment: Alignment.center,
+            height: 200,
+            width: 325,
+            decoration: BoxDecoration(
+              color: Colors.white70,
+              border: Border.all(color: Colors.blue),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            duration: Duration(seconds: 1),
+            curve: Curves.fastOutSlowIn,
+            child: ColorizeAnimatedTextKit(
+              repeatForever: true,
+              text: ['El', 'tema', 'de', 'hoy', 'es', '$titulo'],
+              textStyle: TextStyle(
+                  fontSize: 100.0,
+                  fontFamily: 'IndieFlower',
+                  fontWeight: FontWeight.w900),
+              colors: [Colors.purple, Colors.blue, Colors.yellow, Colors.red],
+              textAlign: TextAlign.center,
+            ),
+          ),
+
+          //----------------------------------------------------------------------------------------
           Container(
             child: FlatButton(
               onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) => SecondRoute()));
+                Navigator.push(
+                    context,
+                    new PageRouteBuilder(
+                        transitionDuration: Duration(seconds: 1),
+                        transitionsBuilder:
+                            (context, animation, animationTime, child) {
+                          animation = CurvedAnimation(
+                              parent: animation, curve: Curves.elasticInOut);
+                          return ScaleTransition(
+                            alignment: Alignment.center,
+                            scale: animation,
+                            child: child,
+                          );
+                        },
+                        pageBuilder: (context, animtation, animationTime) {
+                          return SecondRoute();
+                        }));
               },
               child: Text(
                 'A Dibujar!!',
@@ -113,12 +168,28 @@ class FirstRoute extends StatelessWidget {
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.all(Radius.circular(20))),
           ),
-//-------------------------------------------------------------------------
+
+          //-------------------------------------------------------------------------
           Container(
             child: FlatButton(
               onPressed: () {
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) => ThirdRoute()));
+                Navigator.push(
+                    context,
+                    new PageRouteBuilder(
+                        transitionDuration: Duration(seconds: 1),
+                        transitionsBuilder:
+                            (context, animation, animationTime, child) {
+                          animation = CurvedAnimation(
+                              parent: animation, curve: Curves.elasticInOut);
+                          return ScaleTransition(
+                            alignment: Alignment.center,
+                            scale: animation,
+                            child: child,
+                          );
+                        },
+                        pageBuilder: (context, animtation, animationTime) {
+                          return ThirdRoute();
+                        }));
               },
               child: Text(
                 'Galeria',
@@ -136,9 +207,11 @@ class FirstRoute extends StatelessWidget {
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.all(Radius.circular(40))),
           ),
-//-------------------------------------------------------------------------------
+          //-------------------------------------------------------------------------------
         ],
       )),
     );
   }
 }
+
+class $titulo {}
