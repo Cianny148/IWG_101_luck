@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter/rendering.dart';
+import 'package:iwg_proyect/animacion.dart';
 
 import 'package:iwg_proyect/page2.dart';
 import 'package:iwg_proyect/page3.dart';
@@ -16,6 +18,7 @@ import 'main.dart';
 class FirstRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    BorderSide side;
     return Scaffold(
       drawerEnableOpenDragGesture: true,
       drawer: Drawer(
@@ -67,27 +70,29 @@ class FirstRoute extends StatelessWidget {
       )),
 
       backgroundColor: Colors.blue[200],
-//Barra superior--------------------------------------------
+      //Barra superior--------------------------------------------
       appBar: AppBar(
         backgroundColor: Colors.blue[200],
         shadowColor: Colors.white10,
       ),
-//---------------------------------------------------------
+      //---------------------------------------------------------
 
-//cuerpo principal de la pagina-------------------------
+      //cuerpo principal de la pagina-------------------------
       body: Center(
-//widget columna--------------------------------------------
+          //widget columna--------------------------------------------
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-//###################### Widgets en columna #######################
+          //###################### Widgets en columna #######################
 
-//Imagen avatar redonda-------------------------------------------------------
+          //Imagen avatar redonda-------------------------------------------------------
           Container(
-              child: CircleAvatar(
-            radius: 80.0,
+              child: Center(
+                  child: CircleAvatar(
+            radius: 100.0,
             backgroundImage: AssetImage('icons/New_Drawing.png'),
-          )),
+            child: Circle_prog({}),
+          ))),
 
           Container(
             child: Text('Only Draws?',
@@ -101,7 +106,7 @@ class FirstRoute extends StatelessWidget {
             transform: Matrix4.rotationZ(-0.25),
           ),
 
-//----------------------------------------------------------------------------------------
+          //----------------------------------------------------------------------------------------
           new AnimatedContainer(
             alignment: Alignment.center,
             height: 200,
@@ -125,7 +130,7 @@ class FirstRoute extends StatelessWidget {
             ),
           ),
 
-//----------------------------------------------------------------------------------------
+          //----------------------------------------------------------------------------------------
           Container(
             child: FlatButton(
               onPressed: () {
@@ -164,7 +169,7 @@ class FirstRoute extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(20))),
           ),
 
-//-------------------------------------------------------------------------
+          //-------------------------------------------------------------------------
           Container(
             child: FlatButton(
               onPressed: () {
@@ -202,7 +207,7 @@ class FirstRoute extends StatelessWidget {
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.all(Radius.circular(40))),
           ),
-//-------------------------------------------------------------------------------
+          //-------------------------------------------------------------------------------
         ],
       )),
     );
