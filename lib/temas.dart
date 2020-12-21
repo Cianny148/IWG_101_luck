@@ -6,6 +6,12 @@ String getRandomElement<String>(List<String> list) {
     return list[i];
 }
 
+double getRandomDoubleElement<double>(List<double> list) {
+    final random = new Random();
+    var i = random.nextInt(list.length);
+    return list[i];
+}
+
 String pickWord(){
   String titulo = getRandomElement(sustantivos);
   return titulo;

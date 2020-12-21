@@ -43,8 +43,10 @@ class _FirstRouteState extends State<FirstRoute> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          new MaterialPageRoute(builder: (context) => LoginPage()));
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => LoginPage()));
                     },
                     child: Text('Login'))
               ])),
@@ -97,10 +99,16 @@ class _FirstRouteState extends State<FirstRoute> {
 
 //Imagen avatar redonda-------------------------------------------------------
           Container(
-              child: CircleAvatar(
-            radius: 80.0,
-            backgroundImage: AssetImage('icons/New_Drawing.png'),
-          )),
+            child: Center(
+              child:Stack(children: [
+              CircleAvatar(
+                radius: 80.0,
+                backgroundImage: AssetImage('icons/New_Drawing.png'),
+              ),
+              //inserte su widget de animacion
+            ]),
+            )
+          ),
 
           Container(
             child: Text('Only Draws?',
@@ -117,7 +125,7 @@ class _FirstRouteState extends State<FirstRoute> {
 //----------------------------------------------------------------------------------------
           new AnimatedContainer(
             alignment: Alignment.center,
-            height: 200,
+            height: 130,
             width: 325,
             decoration: BoxDecoration(
               color: Colors.white70,
@@ -130,7 +138,7 @@ class _FirstRouteState extends State<FirstRoute> {
               repeatForever: true,
               text: ['El', 'tema', 'de', 'hoy', 'es', '$titulo'],
               textStyle: TextStyle(
-                  fontSize: 100.0,
+                  fontSize: 70.0,
                   fontFamily: 'IndieFlower',
                   fontWeight: FontWeight.w900),
               colors: [Colors.purple, Colors.blue, Colors.yellow, Colors.red],

@@ -51,17 +51,6 @@ class _SettingsState extends State<Settings> {
                 Divider(
                   color: Colors.black,
                 ),
-                ListTile(title: Text('Opcion 2')),
-                Divider(
-                  color: Colors.black,
-                ),
-                CheckboxListTile(
-                  value: opcion2,
-                  title: Text("CheckBox"),
-                  onChanged: (value) {},
-                ),
-                Container(
-                )
               ],
             )));
   }

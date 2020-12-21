@@ -9,9 +9,12 @@ import 'package:path_provider/path_provider.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   titulo = await getTitulo();
+  await Firebase.initializeApp();
   runApp(MyApp());
 
   Directory appDocDir = await getExternalStorageDirectory();
@@ -33,7 +36,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,]);
+      DeviceOrientation.portraitUp,
+    ]);
     return MaterialApp(
       title: 'WelcomeScreen',
       home: FirstRoute(),
@@ -50,8 +54,6 @@ var ano = hoy.year.toInt();
 int fecha = int.parse('$ano' + '$mes' + '$dia');
 int neoFecha;
 
-//Pedir permisos de almacenamiento---------------------------------------------------------------------------------------------
-
 //Guardar Imagen----------------------------------------------------------------------------------------------------------
 int cont;
 String appDocPath;
@@ -59,7 +61,6 @@ List<String> ids = [];
 
 //settings---------------------------------------------------------------------------------------------------------------7
 bool opcion1;
-bool opcion2 = true;
 String titulo;
 String defaultTittle = 'Nuevo Lienzo';
 
