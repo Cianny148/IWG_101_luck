@@ -8,12 +8,14 @@ import 'package:esys_flutter_share/esys_flutter_share.dart';
 class ThirdRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+      theme: temazo,
+      home: Scaffold(
         appBar: AppBar(
           title: Text('Galeria local'),
           centerTitle: true,
         ),
-        body: Gallery());
+        body: Gallery()));
   }
 }
 

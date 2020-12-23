@@ -4,7 +4,6 @@ import 'package:flutter/rendering.dart';
 import 'package:iwg_proyect/page2.dart';
 import 'package:iwg_proyect/page3.dart';
 import 'package:iwg_proyect/settingsPage.dart';
-import 'package:iwg_proyect/login.dart';
 import 'package:iwg_proyect/animacion.dart';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -23,11 +22,12 @@ class FirstRoute extends StatefulWidget {
 class _FirstRouteState extends State<FirstRoute> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return WillPopScope(child: MaterialApp(
+      theme: temazo,
+      home: Scaffold(
       drawerEnableOpenDragGesture: true,
       drawer: Drawer(
           child: Container(
-        color: Colors.blue[100],
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
           Container(
               padding: EdgeInsets.all(20),
@@ -35,22 +35,16 @@ class _FirstRouteState extends State<FirstRoute> {
                 gradient: LinearGradient(
                     colors: [Colors.blue[200], Colors.blue[800]]),
               ),
-              child: Column(children: [
-                DrawerHeader(
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('icons/no_user.png'),
-                    radius: 80,
-                  ),
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          new MaterialPageRoute(
-                              builder: (context) => LoginPage()));
-                    },
-                    child: Text('Login'))
-              ])),
+              child: Container(
+            child: Text('Only Draws?',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  fontFamily: 'IndieFlower',
+                  fontSize: 60.0,
+                )),
+            transform: Matrix4.rotationZ(-0.25),
+          ),),
           ListTile(
             title: Text('Dibujar'),
             tileColor: Colors.white10,
@@ -75,6 +69,9 @@ class _FirstRouteState extends State<FirstRoute> {
             title: Text('Settings'),
             tileColor: Colors.white10,
             onTap: () {
+              setState(() {
+                
+              });
               Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => Settings()));
             },
@@ -82,10 +79,8 @@ class _FirstRouteState extends State<FirstRoute> {
         ]),
       )),
 
-      backgroundColor: Colors.blue[200],
 //Barra superior--------------------------------------------
       appBar: AppBar(
-        backgroundColor: Colors.blue[200],
         shadowColor: Colors.white10,
       ),
 //---------------------------------------------------------
@@ -110,7 +105,6 @@ class _FirstRouteState extends State<FirstRoute> {
           Container(
             child: Text('Only Draws?',
                 style: TextStyle(
-                  color: Colors.blue[900],
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
                   fontFamily: 'IndieFlower',
@@ -169,7 +163,6 @@ class _FirstRouteState extends State<FirstRoute> {
               child: Text(
                 'A Dibujar!!',
                 style: TextStyle(
-                  color: Colors.white,
                   fontFamily: 'IndieFlower',
                   fontSize: 40.0,
                 ),
@@ -178,7 +171,6 @@ class _FirstRouteState extends State<FirstRoute> {
             padding: EdgeInsets.all(15.0),
             margin: EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-                color: Colors.blue[600],
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.all(Radius.circular(20))),
           ),
@@ -209,7 +201,6 @@ class _FirstRouteState extends State<FirstRoute> {
               child: Text(
                 'Galeria',
                 style: TextStyle(
-                  color: Colors.white,
                   fontFamily: 'IndieFlower',
                   fontSize: 30.0,
                 ),
@@ -218,15 +209,13 @@ class _FirstRouteState extends State<FirstRoute> {
             padding: EdgeInsets.all(10.0),
             margin: EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-                color: Colors.blue[800],
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.all(Radius.circular(40))),
           ),
 //-------------------------------------------------------------------------------
         ],
       )),
-    );
+    )), onWillPop: () async => false)
+    ;
   }
 }
-
-class $titulo {}

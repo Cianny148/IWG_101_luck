@@ -14,7 +14,18 @@ import 'package:firebase_core/firebase_core.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   titulo = await getTitulo();
-  await Firebase.initializeApp();
+  tema1 = await getTemaOne();
+  tema2 = await getTemaTwo();
+  tema3 = await getTemaThree();
+  if (tema1){
+    temazo = miTema;
+  }
+  if (tema2){
+    temazo = tuTema;
+  }
+  if (tema3){
+    temazo = suTema;
+  }
   runApp(MyApp());
 
   Directory appDocDir = await getExternalStorageDirectory();
@@ -31,8 +42,12 @@ void main() async {
 
   cambiarTitulo(opcion1);
 }
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
-class MyApp extends StatelessWidget {
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -45,6 +60,26 @@ class MyApp extends StatelessWidget {
   }
 }
 
+ThemeData temazo;
+
+ThemeData miTema = ThemeData(
+  brightness: Brightness.dark,
+  primaryColor: Colors.red[800],
+  accentColor: Colors.redAccent,
+);
+ThemeData tuTema = ThemeData(
+  brightness: Brightness.light,
+  primaryColor: Colors.green[800],
+  accentColor: Colors.yellowAccent,
+);
+ThemeData suTema = ThemeData(
+  brightness: Brightness.dark,
+  primaryColor: Colors.indigo[800],
+  accentColor: Colors.deepPurpleAccent,
+);
+bool tema1;
+bool tema2;
+bool tema3;
 //Generar Colores nuevos---------------------------------------------------------------------------------------------
 var hoy = new DateTime.now();
 
@@ -54,6 +89,7 @@ var ano = hoy.year.toInt();
 int fecha = int.parse('$ano' + '$mes' + '$dia');
 int neoFecha;
 
+
 //Guardar Imagen----------------------------------------------------------------------------------------------------------
 int cont;
 String appDocPath;
@@ -61,6 +97,9 @@ List<String> ids = [];
 
 //settings---------------------------------------------------------------------------------------------------------------7
 bool opcion1;
+bool temazo1;
+bool temazo2;
+bool temazo3;
 String titulo;
 String defaultTittle = 'Nuevo Lienzo';
 
@@ -130,4 +169,37 @@ getFilesPath() async {
 setFilesPath(List<String> value) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setStringList('FilePath', value);
+}
+
+getTemaOne() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool settingsOne = prefs.getBool('temaOne') ?? true;
+  return settingsOne;
+}
+
+setTemaOne(bool value) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setBool('temaOne', value);
+}
+
+getTemaTwo() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool settingsOne = prefs.getBool('temaTwo') ?? false;
+  return settingsOne;
+}
+
+setTemaTwo(bool value) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setBool('temaTwo', value);
+}
+
+getTemaThree() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool settingsOne = prefs.getBool('temaThree') ?? false;
+  return settingsOne;
+}
+
+setTemaThree(bool value) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setBool('temaThree', value);
 }

@@ -50,6 +50,7 @@ class SecondRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      theme: temazo,
       title: '$titulo',
       home: new ExamplePage(),
     );
@@ -162,7 +163,6 @@ class _ExamplePageState extends State<ExamplePage> {
                 },
                 child: Text('Guardar'))
           ]),
-          color: Colors.blue,
         ),
         //---------------------------------------
         body: new Container(
